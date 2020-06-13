@@ -28,21 +28,19 @@
           <span>Input Data Penjualan</span></a>
       </li>
 
-      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url('Penjualan')?>">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Data Penjualan</span>
-        </a>
-      </li>
-
-       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link" href="grafik-fix.php">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Grafik Penjualan</span>
-        </a>
-      </li>
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Data Tabel</span>
+    </a>
+    <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">View Data:</h6>
+        <a class="collapse-item active" href="<?php echo base_url('Penjualan')?>">Data Penjualan</a>
+        <a class="collapse-item active" href="<?php echo base_url('Penjualan/chart')?>">Grafik</a>
+      </div>
+    </div>
+  </li>
  
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
