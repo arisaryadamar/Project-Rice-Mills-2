@@ -21,7 +21,7 @@ foreach ($dataPemasokanChart as $k => $v) {
   <div id="wrapper">
 
     <!--sidebar-->
-    <?php $this->load->view("admin/admin_pemasokan/sidebar.php") ?>
+    <?php $this->load->view("admin/admin_pemasokan/sidebar3.php") ?>
     <!--end ofsidebar-->
 
     <!-- Content Wrapper -->

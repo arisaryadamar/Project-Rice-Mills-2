@@ -13,8 +13,8 @@ class Login extends CI_Controller{
 	}
 	public function cek_log(){
 		$username = $this->input->post('txt_user');
-		$password = $this->input->post('txt_pass');
-		$cek = $this->Mahasiswa_model->login($username,$password,'tm_user')->result();
+		$password = md5($this->input->post('txt_pass'));
+		$cek = $this->Login_model->login($username,$password,'user')->result();
 		if($cek != FALSE){
 			foreach ($cek as $row) {
 				$user = $row->username;
@@ -29,6 +29,8 @@ class Login extends CI_Controller{
 	}
 	public function logout(){
 		//untuk menghapus semua session
+		$this->session->unset_userdata('session_user');
+		$this->session->unset_userdata('session_grup');
 		$this->session->sess_destroy();
 		redirect('Login');
 	}
