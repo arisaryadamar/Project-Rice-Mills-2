@@ -13,10 +13,6 @@ class Pemasokan extends CI_Controller{
         $data['pemasokan'] = $this->Pemasokan_model->getAll();
         $this->load->view('crud/Data_pemasokan',$data);
     }
-    public function chart(){
-        $data['pemasokan'] = $this->Pemasokan_model->getAll();
-        $this->load->view('crud/grafikpasok_view',$data);
-    }
     public function add()
     {
         $pemasokan = $this->Pemasokan_model;
