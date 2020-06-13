@@ -12,6 +12,10 @@ class Penjualan extends CI_Controller{
 	public function index(){
 		$data['penjualan'] = $this->Penjualan_model->getAll();
 		$this->load->view('crud/Data_penjualan',$data);
+    }
+    public function chart(){
+		$data['penjualan'] = $this->Penjualan_model->getAll();
+		$this->load->view('crud/grafikjual_view',$data);
 	}
 	public function add()
     {
