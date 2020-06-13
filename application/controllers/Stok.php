@@ -10,5 +10,9 @@ class Stok extends CI_Controller{
     $data['stok'] = $this->Stok_model->selectAll();
     $this->load->view('crud/Stok_view',$data);
    }
+   function stokPemasokan(){
+   	$data['stok'] = $this->Stok_model->selectAll();
+    $this->load->view('crud/Stok_pemasokan',$data);
+   }
  }
 ?>

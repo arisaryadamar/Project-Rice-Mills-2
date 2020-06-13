@@ -50,7 +50,7 @@ $getGrup = $this->session->userdata('session_grup');
         <?php
             if($getGrup==1){ 
            echo '<a class="collapse-item" href="'.base_url('Pemasokan/chart').'">Grafik</a>';}?>
-        <a class="collapse-item active" href="<?php echo base_url('Stok/index')?>">Stok Padi</a>
+        <a class="collapse-item active" href="<?php echo base_url('Stok/stokPemasokan')?>">Stok Padi</a>
       </div>
     </div>
   </li>
