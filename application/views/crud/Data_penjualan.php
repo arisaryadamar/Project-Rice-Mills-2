@@ -59,7 +59,8 @@
             <td><?php echo $baris->Jumlah ?></td>
             <td><?php echo $baris->Harga ?></td>
             <td><?php echo $baris->Total_harga ?></td>
-            <td><button class="btn btn-success btn-sm editbtn" type="button"><i class="fas fa-fw fa-edit"></i></button> <button class="btn btn-danger btn-sm" type="button" name="Kode"><i class="fas fa-fw fa-trash"></i></button></a></td>
+            <td align="center"><a href="<?php echo site_url('Penjualan/edit/'.$baris->No)?>" class="btn btn-success btn-sm editbtn" type="button"><i class="fas fa-fw fa-edit"></i></a>
+            <a href="#!" onclick="deleteConfirm('<?php echo site_url('Penjualan/delete/'.$baris->No) ?>')" class="btn btn-danger btn-sm" type="button"><i class="fas fa-fw fa-trash"></i></a></td>
           </tr>
         <?php } ?>
         </tbody>
@@ -122,6 +123,15 @@
 
   <!-- Page level custom scripts -->
   <script src="<?php echo base_url('asset/admin/js/demo/datatables-demo.js')?>"></script>
+
+  <?php $this->load->view("Admin/admin_penjualan/modal.php") ?>
+
+  <script>
+  function deleteConfirm(url){
+    $('#btn-delete').attr('href', url);
+    $('#deleteModal').modal();
+  }
+</script>
 
 </body>
 
