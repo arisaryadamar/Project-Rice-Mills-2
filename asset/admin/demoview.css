@@ -1,0 +1,15 @@
+h2 {
+    /*memberikan style untuk h2*/
+    color: #f00;
+    /*memberikan warna merah pada font*/
+    font-size: 20px;
+    /*ukuran font diatur menjadi 20px*/
+    border-bottom: dashed 1px #f00;
+    /*memberikan efek titik-titik pada garis 
+    yang berada tepat di bawah h2*/
+}
+
+p {
+    font-style: italic;
+    /*mengatur gaya font paragraf menjadi italic*/
+}
