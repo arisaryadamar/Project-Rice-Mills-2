@@ -33,6 +33,7 @@ class Login extends CI_Controller{
 		redirect('Login');
 	}
 	public function lupaPassword(){
-		$this->load->view('crud/Lupa_password')
+		$this->load->view('crud/Lupa_password');
 	}
 }
+?>
