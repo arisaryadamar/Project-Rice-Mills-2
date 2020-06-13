@@ -32,4 +32,7 @@ class Login extends CI_Controller{
 		$this->session->sess_destroy();
 		redirect('Login');
 	}
+	public function lupaPassword(){
+		$this->load->view('crud/Lupa_password')
+	}
 }

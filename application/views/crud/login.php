@@ -61,7 +61,7 @@
 						<span class="txt1">
 							Forgot
 						</span>
-						<a class="txt2" href="lupa-password.php">
+						<a class="txt2" href="<?php echo base_url('Login/lupaPassword')?>">
 							Username / Password?
 						</a>
 					</div>
