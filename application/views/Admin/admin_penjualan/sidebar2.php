@@ -1,3 +1,7 @@
+<?php
+$getuser = $this->session->userdata('session_user');
+$getGrup = $this->session->userdata('session_grup');
+?>
 <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
  
       <!-- Sidebar - Brand -->
@@ -23,7 +27,7 @@
  
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url('Penjualan/add')?>">
+        <a class="nav-link active" href="<?php echo base_url('Penjualan/add')?>">
           <i class="fas fa-fw fa-pencil-alt"></i>
           <span>Input Data Penjualan</span></a>
       </li>
@@ -36,13 +40,16 @@
         </a>
       </li>
 
+      <?php
+            if($getGrup==1){ 
+           echo '
        <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="grafik-fix.php">
+        <a class="nav-link" href="'.base_url('Penjualan/chart').'">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Grafik Penjualan</span>
         </a>
-      </li>
+      </li>';}?>
  
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

@@ -33,7 +33,7 @@ $getGrup = $this->session->userdata('session_grup');
       </li>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('Penjualan')?>">
           <i class="fas fa-fw fa-table"></i>
           <span>Data Penjualan</span>
@@ -44,7 +44,7 @@ $getGrup = $this->session->userdata('session_grup');
             if($getGrup==1){ 
            echo '
        <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="'.base_url('Penjualan/chart').'">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Grafik Penjualan</span>
