@@ -53,7 +53,7 @@
             <td><center><?php echo $baris->Berat; ?></center></td>
             <td><center><?php echo $baris->Biaya_Penggilingan ?></center></td>
             <td align="center"><a href="<?php echo site_url('Penggilingan/edit/'.$baris->id_penggilingan)?>" class="btn btn-success btn-sm editbtn" type="button"><i class="fas fa-fw fa-edit"></i></a>
-            <a href="#!" onclick="deleteConfirm('<?php echo site_url('Penggilingan/delete/'.$baris->id_penggilingan) ?>')" class="btn btn-danger btn-sm" type="button"><i class="fas fa-fw fa-trash"></i></a></td>
+            <a href="#!" onclick="deleteConfirm('<?php echo site_url('Penggilingan/hapus/'.$baris->id_penggilingan) ?>')" class="btn btn-danger btn-sm" type="button"><i class="fas fa-fw fa-trash"></i></a></td>
           </tr>
         <?php } ?>
         </tbody>

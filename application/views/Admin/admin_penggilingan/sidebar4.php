@@ -23,7 +23,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="i<?php echo base_url('Penggilingan/add')?>">
+        <a class="nav-link" href="<?php echo base_url('Penggilingan/tambah')?>">
           <i class="fas fa-fw fa-pencil-alt"></i>
           <span>Input Data Penggilingan</span></a>
       </li>

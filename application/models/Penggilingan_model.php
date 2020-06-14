@@ -2,61 +2,43 @@
  
 class Penggilingan_model extends CI_Model{
 
-    private $_table = "tb_penggilingan";
+    function getAll(){
+        $this->db->select('*');
+        $this->db->from('tb_penggilingan');
+        $query = $this->db->get();
+        //  $query= $this->db->get();
+         return $query;
+}
 
-    public $id_penggilingan;
-    public $id_stok = 1;
-    public $Tanggal;
-    public $Berat;
-    public $Biaya_Penggilingan;
+function input_data($data,$table){
+    $query = $this->db->insert($table,$data);
+    // $query = $this->db->get('tm_grup');
+return $query;
+}
 
-
-    public function rules()
-    {
-        return [
-            ['field' => 'Tanggal',
-            'label' => 'Tanggal',
-            'rules' => 'required'],
-
-            ['field' => 'Berat',
-            'label' => 'Berat',
-            'rules' => 'numeric'],
-            
-            ['field' => 'Biaya_Penggilingan',
-            'label' => 'Biaya_Penggilingan',
-            'rules' => 'numeric']
-        ];
-    }
-    public function getAll()
-    {
-        return $this->db->get($this->_table)->result();
-    }
-    
-    public function getById($id)
-    {
-        return $this->db->get_where($this->_table, ["id_penggilingan" => $id])->row();
-    }
-
-    public function save()
-    {
-        $post = $this->input->post();
-        $this->Tanggal = $post["Tanggal"];
-        $this->Berat = $post["Berat"];
-        $this->Biaya_Penggilingan = $post["Biaya_Penggilingan"];
-        return $this->db->insert($this->_table, $this);
-    }
-    public function update()
-    {
-        $post = $this->input->post();
-        $this->id_penggilingan = $post["id_penggilingan"];
-        $this->Tanggal = $post["Tanggal"];
-        $this->Berat = $post["Berat"];
-        $this->Biaya_Penggilingan = $post["Biaya_Penggilingan"];
-        return $this->db->update($this->_table, $this, array('id_penggilingan' => $post['id_penggilingan']));
-    }
-    public function delete($id)
-    {
-        return $this->db->delete($this->_table, array("id_penggilingan" => $id));
+function edit_data($where,$table){
+    return $this->db->get_where($table,$where);
+}
+//membuat function update_data untuk pemanggilan di controller
+function update_data($id_penggilingan,$data,$table){
+    $this->db->where('id_penggilingan',$id_penggilingan);
+    $berhasil = $this->db->update($table,$data);
+    if($berhasil){
+        echo "berhasil";
+    }else{
+        echo "gagal";
     }
 }
-?>
+
+//membuat function hapus_data untuk pemanggilan di controller
+function hapus_data($id_penggilingan,$table){
+    $this->db->where('id_penggilingan', $id_penggilingan);
+    $berhasil = $this->db->delete($table);
+    if($berhasil){
+        echo "berhasil";
+    }else{
+        echo "gagal";
+    }
+}
+    
+}?>

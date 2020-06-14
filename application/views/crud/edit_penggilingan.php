@@ -20,11 +20,6 @@
         <!-- Topbar -->
         <?php $this->load->view("admin/admin_penggilingan/topbar.php") ?>
         <!--End of Topbar -->
-        <?php if ($this->session->flashdata('success')): ?>
-        <div class="alert alert-success" role="alert">
-          <?php echo $this->session->flashdata('success'); ?>
-        </div>
-        <?php endif; ?>
         <div class="container-fluid">
     <div class="card shadow mb-4">
            <div class="card-header py-3">
@@ -33,32 +28,27 @@
          <div class="card-body">
   
         <div class="row align-items-center justify-content-center">
-        <form action="<?php base_url("Penggilingan/edit") ?>" method="post"
+          <?php foreach($penggilingan as $baris){ ?>
+        <form action="<?php base_url("Penggilingan/update") ?>" method="post"
               enctype="multipart/form-data" >
           
-            <input type="hidden" name="id_penggilingan" value="<?php echo $tb_penggilingan->id_penggilingan; ?>">
+            <input type="hidden" name="id_penggilingan" value="<?php echo $baris->id_penggilingan; ?>">
 
             <div class="form-group">
             <label style="margin-right: 500px"><b>Tanggal</b></label>
-            <input type="date" value="<?=date('Y-m-d')?>" style="width: 600px" class="form-control" id="Tanggal" name="Tanggal" placeholder="Masukkan Tanggal" value="<?php echo $tb_penggilingan->Tanggal; ?>" required>
+            <input type="date" style="width: 600px" class="form-control" id="Tanggal" name="Tanggal" placeholder="Masukkan Tanggal" value="<?php echo $baris->Tanggal; ?>" required>
             <div class="invalid-feedback">
                 </div>
           </div>
 
           <div class="form-group">
             <label style="margin-right: 510px"><b>Berat</b></label>
-            <input type="text" style="width: 600px" class="form-control <?php echo form_error('Berat') ? 'is-invalid':'' ?> " id="Berat" name="Berat" placeholder="Masukkan nama" value="<?php echo $tb_penggilingan->Berat;?>">
-            <div class="invalid-feedback">
-                  <?php echo form_error('Berat') ?>
-                </div>
+            <input type="text" style="width: 600px" class="form-control" id="Berat" name="Berat" placeholder="Masukkan nama" value="<?php echo $baris->Berat;?>" required>
           </div>
 
           <div class="form-group">
             <label style="margin-right: 420px"><b>Biaya Penggilingan</b></label>
-            <input type="text" style="width: 600px" class="form-control <?php echo form_error('Biaya_Penggilingan') ? 'is-invalid':'' ?>" id="Biaya_Penggilingan" name="Biaya_Penggilingan" placeholder="Masukkan nomor" value="<?php echo $tb_penggilingan->Biaya_Penggilingan; ?>">
-            <div class="invalid-feedback">
-                  <?php echo form_error('Biaya_Penggilingan') ?>
-                </div>
+            <input type="text" style="width: 600px" class="form-control" id="Biaya_Penggilingan" name="Biaya_Penggilingan" placeholder="Masukkan nomor" value="<?php echo $baris->Biaya_Penggilingan; ?>" required>
           </div>
 
           <br><br>
@@ -66,6 +56,7 @@
         <input class="btn btn-success" type="submit" name="btn" value="Update" onclick="return confirm('Anda yakin ingin mengupdate data?');" />
               <br><br>
             </form>
+            <?php } ?>
           </div>
           </div>
 </div>

@@ -20,20 +20,16 @@
         <!-- Topbar -->
         <?php $this->load->view("admin/admin_penggilingan/topbar.php") ?>
         <!--End of Topbar -->
-        
-        <?php if ($this->session->flashdata('success')): ?>
-        <div class="alert alert-success" role="alert">
-          <?php echo $this->session->flashdata('success'); ?>
-        </div>
-        <?php endif; ?>
 
         <div class="card shadow mb-4">
            <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-dark">Input Data Penggilingan</h6> <!--membuat judul pada card-->
            </div>
+         
          <div class="card-body">
-
-            <form action="<?php echo site_url('Penggilingan/add') ?>" method="post" enctype="multipart/form-data">
+          <div class="penggilingan">
+          
+            <form action="<?php echo site_url('Penggilingan/input') ?>" method="post" enctype="multipart/form-data">
             <!-- Note: atribut action dikosongkan, artinya action-nya akan diproses 
               oleh controller tempat vuew ini digunakan. Yakni index.php/admin/products/edit/ID --->
 
@@ -63,10 +59,18 @@
                 </div>
               </div>
 
-              <input class="btn btn-success" type="submit" name="btn" value="Save" />
+              <input class="btn btn-success" type="submit" name="btn" value="Tambah" />
+              <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+                      <script type ="text/javascript">
+                        $(".penggilingan").keyup(function(){
+                          var Berat = parseInt($("#Berat").val())
+                          var Biaya_Penggilingan = 100000 * Berat;
+                          $("#Biaya_Penggilingan").attr("value",Biaya_Penggilingan)
+                        });
+                      </script>
             </form>
+            </div>
           </div>
-
           <div class="card-footer small text-muted">
             * required fields
           </div>

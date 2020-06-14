@@ -1,59 +1,79 @@
 <?php
 class Penggilingan extends CI_Controller{
-	//fungsi di dalam class yang di eksekusi pertama kali saat class itu dipanggil
-	function __construct(){ 
-		/*Jika menggunakan construct di controller, parent::__constructor diperlukan 
-		karena konstruktor lokal Anda akan menimpa yang ada di kelas induk kontrol sehingga kami perlu menyebutnya secara manual*/
-		parent::__construct();
-		//load file mahasiswa_model di construct agar seluruh function di dalam controller dapat mengakses model yang di load
-		$this->load->model('Penggilingan_model');
-		$this->load->library('form_validation');
-	}
-	public function index(){
-		$data['penggilingan'] = $this->Penggilingan_model->getAll();
-		$this->load->view('crud/Data_penggilingan',$data);
-	}
-    public function add()
-    {
-        $penggilingan = $this->Penggilingan_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($penggilingan->rules());
 
-        if ($validation->run()) {
-            $penggilingan->save();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+    function __construct(){ 
+        /*Jika menggunakan construct di controller, parent::__constructor diperlukan 
+        karena konstruktor lokal Anda akan menimpa yang ada di kelas induk kontrol sehingga kami perlu menyebutnya secara manual*/
+        parent::__construct();
+        //load file mahasiswa_model di construct agar seluruh function di dalam controller dapat mengakses model yang di load
+        $this->load->model('Penggilingan_model');
+    }
+
+    public function index(){
+        $data['penggilingan'] = $this->Penggilingan_model->getAll()->result();
+        $this->load->view('crud/Data_Penggilingan',$data);
+    }
+    
+    public function Api(){
+        $data = $this->Penggilingan_model->getAll();
+        echo json_encode($data->result_array());
+    }
+
+    public function tambah(){
+        $data['penggilingan'] = $this->Penggilingan_model->getAll()->result();
+        $this->load->view('crud/input_penggilingan', $data);
+    }
+
+    public function input(){
+        $id = '1';
+        $Tanggal = $this->input->post('Tanggal');
+        $Berat = $this->input->post('Berat');
+        $Biaya_Penggilingan = $this->input->post('Biaya_Penggilingan');
+
+        $data = array(
+            "id_stok" => $id,
+            'Tanggal' => $Tanggal,
+            'Berat' => $Berat,
+            'Biaya_Penggilingan' => $Biaya_Penggilingan
+        );
+
+        $this->Penggilingan_model->input_data($data,'tb_penggilingan');
             redirect('Penggilingan/index');
-        }
-
-        $this->load->view("crud/input_penggilingan");
-    }
-    public function edit($id = null)
-    {
-        if (!isset($id)) redirect('Penggilingan/index');
-       
-        $penggilingan = $this->Penggilingan_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($penggilingan->rules());
-
-        if ($validation->run()) {
-            $penggilingan->update();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
-            redirect('Penggilingan/');
-        }
-
-        $data["tb_penggilingan"] = $penggilingan->getById($id);
-        if (!$data["tb_penggilingan"]) show_404();
-        $this->load->view("crud/edit_penggilingan", $data);
         
     }
 
-    public function delete($id=null)
-    {
-        if (!isset($id)) show_404();
-        
-        if ($this->Penggilingan_model->delete($id)) {
-            redirect(site_url('Penggilingan/index'));
-        }
+    //membuat function edit dengan parameter id
+    public function edit($id){
+        //membuat array dengan parameter where
+        $where = array('id_penggilingan' => $id);
+        //array grup dengan parameter data dan memanggil mahasiswal model dengan parameter getgrup
+        $data['penggilingan'] = $this->Penggilingan_model->edit_data($where,'tb_penggilingan')->result();
+        $this->load->view('crud/edit_penggilingan', $data);
     }
-}
-?>
+
+    //membuat function update
+    public function update(){
+        //membuat inputan pada update data
+        $id_penggilingan = $this->input->post('id_penggilingan');
+        $Tanggal = $this->input->post('Tanggal');
+        $Berat = $this->input->post('Berat');
+        $Biaya_Penggilingan = $this->input->post('Biaya_Penggilingan');
+
+        $data = array(
+            'id_penggilingan' => $id_penggilingan,
+            'Tanggal' => $Tanggal,
+            'Berat' => $Berat,
+            'Biaya_Penggilingan' => $Biaya_Penggilingan
+        );
+
+        $this->Penggilingan_model->update_data($id_penggilingan,$data,'tb_penggilingan');
+        redirect('Penggilingan/index');
+    }
+
+    public function hapus(){
+        $id_penggilingan = $this->uri->segment(3);
+        $this->Penggilingan_model->hapus_data($id_penggilingan, 'tb_penggilingan');
+        redirect('Penggilingan/index');
+    }
+
+}?>

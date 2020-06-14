@@ -9,7 +9,7 @@ class Login extends CI_Controller{
 		$this->load->model('Login_model');
 	}
 	public function index(){
-		$this->load->view('crud/login');
+		$this->load->view('crud/login_view');
 	}
 	public function cek_log(){
 		$username = $this->input->post('txt_user');
@@ -24,7 +24,7 @@ class Login extends CI_Controller{
 			$this->session->set_userdata('session_grup', $grup);
 			redirect('Ricemills');
 		}else{
-			$this->load->view('crud/login');
+			$this->load->view('crud/login_view');
 		}
 	}
 	public function logout(){
