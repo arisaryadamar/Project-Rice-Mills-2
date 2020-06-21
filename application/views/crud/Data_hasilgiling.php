@@ -27,7 +27,7 @@
   </div>
   <div class="card-body">
     <div class="pull-right">
-                <a href="<?php echo site_url('Hasilgiling/add')?>" type="button" class="btn btn-primary btn-sm"><i class="fas fa-fw fa-plus"></i>Tambah Data Beras</a>
+                <a href="<?php echo site_url('Hasilgiling/tambah')?>" type="button" class="btn btn-primary btn-sm"><i class="fas fa-fw fa-plus"></i>Tambah Data Beras</a>
              </div>
     <div class="table-responsive"><!--membuat tabel responsive-->
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -58,7 +58,7 @@
             <td align="center">
               <a href="<?php echo site_url('Hasilgiling/EditStok/'.$baris->kode_barang)?>" class="btn btn-success btn-sm">Tambah Stok</a>
               <a href="<?php echo site_url('Hasilgiling/edit/'.$baris->kode_barang)?>" class="btn btn-warning btn-sm editbtn" type="button"><i class="fas fa-fw fa-edit"></i></a>
-            <a href="#!" onclick="deleteConfirm('<?php echo site_url('Hasilgiling/delete/'.$baris->kode_barang) ?>')" class="btn btn-danger btn-sm" type="button"><i class="fas fa-fw fa-trash"></i></a></td>
+            <a href="#!" onclick="deleteConfirm('<?php echo site_url('Hasilgiling/hapus/'.$baris->kode_barang) ?>')" class="btn btn-danger btn-sm" type="button"><i class="fas fa-fw fa-trash"></i></a></td>
           </tr>
         <?php } ?>
         </tbody>

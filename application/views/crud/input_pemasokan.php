@@ -34,7 +34,7 @@
   </div>
   <div class="card-body">
   <div class="table-responsive"><!--membuat tabel responsive-->
-            <form action="<?php echo site_url('Pemasokan/add') ?>" method="post" enctype="multipart/form-data">
+            <form action="<?php echo site_url('pmsk/input') ?>" method="post" enctype="multipart/form-data">
             <!-- Note: atribut action dikosongkan, artinya action-nya akan diproses 
               oleh controller tempat vuew ini digunakan. Yakni index.php/admin/products/edit/ID --->
 
@@ -85,9 +85,9 @@
               <label class="col-sm-12 col-md-2 col-form-label">Berat (TON)</label>
               <div class="col-sm-12 col-md-10">
                 <input class="form-control"
-                 type="text" name="Berat" placeholder="Masukkan berat" value="<?php echo form_error('Berat') ?>" />
+                 type="text" name="berat" placeholder="Masukkan berat" value="<?php echo form_error('berat') ?>" />
                 <div class="invalid-feedback">
-                  <?php echo form_error('Berat') ?>
+                  <?php echo form_error('berat') ?>
                 </div>
               </div>
               </div>

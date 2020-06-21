@@ -41,19 +41,19 @@
         </thead>
         <tbody>
           <?php $no = 1;
-          foreach ($pemasokan as $baris) {
+          foreach ($pmsk as $baris) {
           ?>
           <tr><td><?php echo $no++;?></td>
             <td><?php echo $baris->tgl; ?></td>
             <td><?php echo $baris->nama; ?></td>
             <td><?php echo $baris->nmr ?></td>
             <td><?php echo $baris->alamat ?></td>
-            <td><?php echo $baris->Berat ?></td>
+            <td><?php echo $baris->berat ?></td>
             <td><?php echo $baris->harga ?></td>
             <td>
-                      <a href="<?php echo site_url('Pemasokan/edit/'.$baris->id_pemasokan) ?>"
+                      <a href="<?php echo site_url('pmsk/edit/'.$baris->id_pemasokan) ?>"
                        class="btn btn-success btn-icon-split"><i class="fas fa-edit" style="padding: 5px;"></i></a>
-                      <a onclick="deleteConfirm('<?php echo site_url('Pemasokan/delete/'.$baris->id_pemasokan) ?>')"
+                      <a onclick="deleteConfirm('<?php echo base_url('pmsk/hapus/'.$baris->id_pemasokan) ?>')"
                        href="#!" class="btn btn-danger btn-icon-split"><i class="fas fa-trash" style="padding: 5px;"></i></a>
                     </td>
           </tr>

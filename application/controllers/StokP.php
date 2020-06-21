@@ -1,5 +1,5 @@
 <?php
-class Stok extends CI_Controller{
+class StokP extends CI_Controller{
   function __construct(){ 
     parent::__construct();
      $this->load->model('Stok_model');
@@ -8,7 +8,7 @@ class Stok extends CI_Controller{
  function index(){
     
     $data['stok'] = $this->Stok_model->selectAll();
-    $this->load->view('crud/Stok_pemasokan',$data);
+    $this->load->view('crud/Stok_view',$data);
    }
  }
 ?>

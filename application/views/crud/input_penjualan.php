@@ -39,13 +39,10 @@
            </div>
          <div class="card-body">
 
-            <form action="<?php echo base_url('Penjualan/add') ?>" method="post" enctype="multipart/form-data">
-            <!-- Note: atribut action dikosongkan, artinya action-nya akan diproses 
-              oleh controller tempat vuew ini digunakan. Yakni index.php/admin/products/edit/ID --->
+         <form action="<?php echo site_url('Penjualan/input') ?>" method="post" enctype="multipart/form-data">
 
               <div class="row">
                       <div class="col-12 col-xs-12 formsiswa">
-                          <form action="prosespenjualan.php" method="post" class="needs-validation" novalidate>
                           <div class="form_group">
                             <label for="tgl">Tanggal</label>
                             <input type="date" name="tanggal" id="tgl" value="<?=date('Y-m-d')?>" class="form-control" required>
@@ -85,7 +82,7 @@
                         <div class="col">
                         <label for="Total">Total Harga</label>
                             <input name="total" type="text" class="form-control" id="Total">
-                                
+                            <input name="stok-awal" type="text" class="form-control" value="<?php echo $row->stok ?>">
                         </div>
                     </div> <br><br>
                     <center><button class="btn btn-primary" name="input" type="submit">Save</button></center>

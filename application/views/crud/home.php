@@ -122,11 +122,12 @@ $getGrup = $this->session->userdata('session_grup');
       <div class="container">
         <div class="row mb-5 justify-content-center">
 
-          <?php
+          <?php  
             if($getGrup==1){ 
+              
            echo '<div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="">
-            <a href="'.base_url('Pemasokan/index').'"><img src="'.base_url('asset/home/images/masok.png').'" alt="Free Website Template by Free-Template.co" class="img-fluid w-25 mb-4"></a>
-          <a href="'.base_url('Pemasokan/index').'"><h3 class="card-title">PEMASOKAN</h3></a>
+            <a href="'.base_url('pmsk/index').'"><img src="'.base_url('asset/home/images/masok.png').'" alt="Free Website Template by Free-Template.co" class="img-fluid w-25 mb-4"></a>
+          <a href="'.base_url('pmsk/index').'"><h3 class="card-title">PEMASOKAN</h3></a>
             <p>Padi dari pemasok.</p>
           </div>
           <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="100">

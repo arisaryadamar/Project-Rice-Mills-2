@@ -30,7 +30,7 @@ $getGrup = $this->session->userdata('session_grup');
 
   <!-- Nav Item - Dashboard -->
   <li class="nav-item">
-    <a class="nav-link" href="<?php echo base_url('Pemasokan/add')?>">
+    <a class="nav-link" href="<?php echo base_url('pmsk/tambah')?>">
       <i class="fas fa-fw fa-pencil-alt"></i>
       <span>Input Data Pemasokan</span></a>
   </li>
@@ -46,11 +46,11 @@ $getGrup = $this->session->userdata('session_grup');
     <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">View Data:</h6>
-        <a class="collapse-item" href="<?php echo base_url('Pemasokan/index')?>">Data Pemasokan</a>
+        <a class="collapse-item" href="<?php echo base_url('pmsk/index')?>">Data Pemasokan</a>
         <?php
             if($getGrup==1){ 
-           echo '<a class="collapse-item" href="'.base_url('Pemasokan/chart').'">Grafik</a>';}?>
-        <a class="collapse-item active" href="<?php echo base_url('Stok/stokPemasokan')?>">Stok Padi</a>
+           echo '<a class="collapse-item" href="'.base_url('pmsk/chart').'">Grafik</a>';}?>
+        <a class="collapse-item active" href="<?php echo base_url('Stok/index')?>">Stok Padi</a>
       </div>
     </div>
   </li>

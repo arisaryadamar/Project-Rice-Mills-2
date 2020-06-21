@@ -1,9 +1,9 @@
 <?php
-$this->db->select('tgl,Berat');
-$dataPemasokanChart = $this->Pemasokan_model->getAll();
+
+$dataPemasokanChart = $this->Model_pemasokan->chart()->result();
 //print_r($dataPemasokanChart);die();
 foreach ($dataPemasokanChart as $k => $v) {
-  $arrPasok[] = ["label" => $v->tgl, "y" => $v->Berat];
+  $arrPasok[] = ["label" => $v->tgl, "y" => $v->berat];
 }
  //var_dump ($arrPasok);die();
 

@@ -10,66 +10,86 @@ class Penjualan extends CI_Controller{
 		
 	}
 	public function index(){
-		$data['penjualan'] = $this->Penjualan_model->getAll();
-		$this->load->view('crud/Data_penjualan',$data);
-    }
-    public function chart(){
-		$data['penjualan'] = $this->Penjualan_model->getAll();
-		$this->load->view('crud/grafikjual_view',$data);
+        $data['penjualan'] = $this->Penjualan_model->getAll()->result();
+        $this->load->view('crud/Data_penjualan',$data);
 	}
-	public function add()
-    {
-        $penjualan = $this->Penjualan_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($penjualan->rules());
+	
+	public function Api(){
+		$data = $this->Penjualan_model->getAll();
+		echo json_encode($data->result_array());
+	}
 
-        if ($validation->run()) {
-            $penjuala->save();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
-            redirect('Penjualan/index');
-		}
+	public function chart(){
+        $data['penjualan'] = $this->Penjualan_model->getAll();
+        $this->load->view('crud/grafikpasok_view',$data);
+    }
+
+    public function tambah(){
+        $data['penjualan'] = $this->Penjualan_model->getAll()->result();
+        $data['kode'] = $this->Penjualan_model->get_kode()->result();
+        $this->load->view('crud/input_penjualan', $data);
+        
+	}
+
+    public function input(){
+		$Kode_barang = $this->input->post('kode');
+        $Jumlah = $this->input->post('jumlah');
+		$Harga = $this->input->post('harga');
+		$Total_harga = $this->input->post('total');
+		$tanggal = $this->input->post('tanggal');
+        $data = array(
+			"Kode_barang" => $Kode_barang,
+            'Jumlah' => $Jumlah,
+			'Harga' => $Harga,
+			'Total_harga' => $Total_harga,
+			'tanggal' => $tanggal
+		);
+        $berhasil = $this->Penjualan_model->input_data($data,'tb_penjualan');
+            $this->db->where('kode_barang',$kode_barang);
+            $a = $this->db->get()->result('stok');
+            echo $a;
+            // $this->Penjualan_model->update_kurang($jumlah,$Kode_barang);
+        }
+				
+
+	//membuat function edit dengan parameter id
+	public function edit($id){
+		//membuat array dengan parameter where
+		$where = array('kode_barang' => $id);
+		//array grup dengan parameter data dan memanggil mahasiswal model dengan parameter getgrup
+		$data['penjualan'] = $this->Penjualan_model->edit_data($where,'tb_penjualan')->result();
+		$this->load->view('crud/edit_penjualan', $data);
+	}
+
+	//membuat function update
+	public function update(){
+		//membuat inputan pada update data
+		$kode_barang = $this->input->post('kode_barang');
+		$Jumlah = $this->input->post('Jumlah$Jumlah');
+		$Harga = $this->input->post('Harga');
+		$Total_harga = $this->input->post('Total$Total_harga');
+        $tanggal = $this->input->post('tanggal');
+        $berat = $this->input->post('berat');
+        $harga = $this->input->post('harga');
+
+		$data = array(
+			'kode_barang' => $kode_barang,
+            'Jumlah$Jumlah' => $Jumlah,
+			'Harga' => $Harga,
+			'Total$Total_harga' => $Total_harga,
+			'tanggal' => $tanggal
+		);
+
 		
-		$data['kode'] = $this->Penjualan_model->get_kode()->result();
-		$this->load->view("crud/input_penjualan",$data);
-		function input(){
-			$penjualan=array(
-				'tanggal'           =>$this->input->post('tanggal'),
-				'kode_barang'          => $this->input->post('kode_barang'),
-				'Jumlah'          => $this->input->post('Jumlah'),
-				'Harga'          => $this->input->post('Harga'),
-				'Total_harga'        => $this->input->post('Total_harga')
-				);
-			$this->model_mahasiswa->input($penjualan);
-			$this->add();
-		}
+
+		$this->Penjualan_model->update_data($kode_barang,$data,'tb_penjualan');
+			redirect('Penjualan');
 	}
-	public function edit($id = null)
-    {
-        if (!isset($id)) redirect('penjualan/index');
-       
-        $penjualan = $this->Penjualan_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($penjualan->rules());
 
-        if ($validation->run()) {
-            $penjualan->update();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
-            redirect('penjualan/');
-        }
+	public function hapus(){
+		$kode_barang = $this->uri->segment(3);
+		$this->Penjualan_model->hapus_data($kode_barang, 'tb_penjualan');
+		redirect('Penjualan');
+	}
 
-        $data["tb_penjualan"] = $penjualan->getById($id);
-        if (!$data["tb_penjualan"]) show_404();
-        $this->load->view("crud/edit_penjualan", $data);
-        
-    }
-
-    public function delete($id=null)
-    {
-        if (!isset($id)) show_404();
-        
-        if ($this->Penjualan_model->delete($id)) {
-            redirect(site_url('penjualan/index'));
-        }
-    }
-}
-?>
+}?>

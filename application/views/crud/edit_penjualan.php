@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php $this->load->view("admin/admin_penggilingan/head.php") ?>
+<?php $this->load->view("admin/admin_penjualan/head.php") ?>
 
 <body id="page-top">
 
@@ -8,7 +8,7 @@
   <div id="wrapper">
 
     <!--sidebar-->
-    <?php $this->load->view("admin/admin_penggilingan/sidebar.php") ?>
+    <?php $this->load->view("admin/admin_penjualan/sidebar.php") ?>
     <!--end ofsidebar-->
 
     <!-- Content Wrapper -->
@@ -18,7 +18,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php $this->load->view("admin/admin_penggilingan/topbar.php") ?>
+        <?php $this->load->view("admin/admin_penjualan/topbar.php") ?>
         <!--End of Topbar -->
         <?php if ($this->session->flashdata('success')): ?>
         <div class="alert alert-success" role="alert">
@@ -28,41 +28,58 @@
         <div class="container-fluid">
     <div class="card shadow mb-4">
            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-dark" align="text-center">Edit Data Penggilingan</h6> <!--membuat judul pada card-->
+              <h6 class="m-0 font-weight-bold text-dark" align="text-center">Edit Data Penjualan</h6> <!--membuat judul pada card-->
            </div>
          <div class="card-body">
   
         <div class="row align-items-center justify-content-center">
-        </div><?php foreach($penggilingan as $baris){ ?>
-    <form action="<?php echo base_url().'Penggilingan/update'; ?>" method="post"
+        </div><?php foreach($penjualan as $baris){ ?>
+        <form action="<?php base_url("Penjualan/update") ?>" method="post"
               enctype="multipart/form-data" >
-          
-            <input type="hidden" name="id_penggilingan" value="<?php echo $baris->id_penggilingan; ?>">
+
+              <input type="hidden" name="No" value="<?php echo $baris->No; ?>">
 
             <div class="form-group">
             <label style="margin-right: 500px"><b>Tanggal</b></label>
-            <input type="date" value="<?=date('Y-m-d')?>" style="width: 600px" class="form-control" id="Tanggal" name="Tanggal" placeholder="Masukkan Tanggal" value="<?php echo $baris->Tanggal; ?>" required>
+            <input type="date" style="width: 600px" class="form-control <?php echo form_error('tanggal') ? 'is-invalid':'' ?>" id="tanggal" name="tanggal" placeholder="Masukkan Tanggal" value="<?php echo $baris->tanggal; ?>" required>
             <div class="invalid-feedback">
+              <?php echo form_error('tanggal') ?>
+                </div>
+          </div>
+
+
+            <div class="form-group">
+            <label style="margin-right: 500px"><b>Kode Barang</b></label>
+            <input type="text" style="width: 600px" class="form-control <?php echo form_error('kode_barang') ? 'is-invalid':'' ?>" id="kode_barang" name="kode_barang" placeholder="Masukkan Kode Barang" value="<?php echo $baris->kode_barang; ?>" required>
+            <div class="invalid-feedback">
+              <?php echo form_error('kode_barang') ?>
                 </div>
           </div>
 
           <div class="form-group">
-            <label style="margin-right: 510px"><b>Berat</b></label>
-            <input type="text" style="width: 600px" class="form-control <?php echo form_error('Berat') ? 'is-invalid':'' ?> " id="Berat" name="Berat" placeholder="Masukkan nama" value="<?php echo $baris->Berat;?>">
+            <label style="margin-right: 510px"><b>Jumlah</b></label>
+            <input type="text" style="width: 600px" class="form-control <?php echo form_error('Jumlah') ? 'is-invalid':'' ?> " id="Jumlah" name="Jumlah" placeholder="Masukkan Jumlah" value="<?php echo $baris->Jumlah;?>">
             <div class="invalid-feedback">
-                  <?php echo form_error('Berat') ?>
+                  <?php echo form_error('Jumlah') ?>
                 </div>
           </div>
 
           <div class="form-group">
-            <label style="margin-right: 420px"><b>Biaya Penggilingan</b></label>
-            <input type="text" style="width: 600px" class="form-control <?php echo form_error('Biaya_Penggilingan') ? 'is-invalid':'' ?>" id="Biaya_Penggilingan" name="Biaya_Penggilingan" placeholder="Masukkan nomor" value="<?php echo $baris->Biaya_Penggilingan; ?>">
+            <label style="margin-right: 510px"><b>Harga (per pcs)</b></label>
+            <input type="text" style="width: 600px" class="form-control <?php echo form_error('Harga') ? 'is-invalid':'' ?> " id="Harga" name="Harga" placeholder="Masukkan Harga per pcs" value="<?php echo $baris->Harga;?>">
             <div class="invalid-feedback">
-                  <?php echo form_error('Biaya_Penggilingan') ?>
+                  <?php echo form_error('Harga') ?>
                 </div>
           </div>
 
-          <br><br>
+          <div class="form-group">
+            <label style="margin-right: 510px"><b>Total Harga</b></label>
+            <input type="text" style="width: 600px" class="form-control <?php echo form_error('Total_harga') ? 'is-invalid':'' ?> " id="Total_harga" name="Total_harga" placeholder="Masukkan total harga" value="<?php echo $baris->Total_harga;?>">
+            <div class="invalid-feedback">
+                  <?php echo form_error('Total_harga') ?>
+                </div>
+          </div>
+          
           
         <input class="btn btn-success" type="submit" name="btn" value="Update" onclick="return confirm('Anda yakin ingin mengupdate data?');" />
               <br><br>
@@ -78,7 +95,7 @@
 
 
        <!-- Footer -->
-       <?php $this->load->view("admin/admin_penggilingan/footer.php") ?>
+       <?php $this->load->view("admin/admin_penjualan/footer.php") ?>
         <!-- End of Footer -->
 
     </div>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php $this->load->view("admin/admin_penggilingan/head.php") ?>
+<?php $this->load->view("Admin/admin_pemasokan/head.php") ?>
 
 <body id="page-top">
 
@@ -8,7 +8,7 @@
   <div id="wrapper">
 
     <!--sidebar-->
-    <?php $this->load->view("admin/admin_penggilingan/sidebar.php") ?>
+    <?php $this->load->view("Admin/admin_pemasokan/sidebar.php") ?>
     <!--end ofsidebar-->
 
     <!-- Content Wrapper -->
@@ -18,42 +18,44 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php $this->load->view("admin/admin_penggilingan/topbar.php") ?>
+        <?php $this->load->view("Admin/admin_pemasokan/topbar.php") ?>
         <!--End of Topbar -->
         <div class="container-fluid">
         <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h5 class="m-0 font-weight-bold text-dark">Data Table Penggilingan</h6> <!--membuat judul pada card-->
+    <h6 class="m-0 font-weight-bold text-primary">Data Table Pemasokan</h6> <!--membuat judul pada card-->
   </div>
   <div class="card-body">
     <div class="table-responsive"><!--membuat tabel responsive-->
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead><!--membuat head pada tabel-->
           <tr><th>No</th>
-            <th><center>Tanggal</center></th>
-            <th><center>Beras Digiling (ton)</center></th>
-            <th><center>Biaya Penggilingan (Rp)</center></th>
-            <th><center>Action</center></th>
+            <th>Tanggal</th>
+            <th>Nama</th>
+            <th>Nomor Telp</th>
+            <th>Alamat</th>
+            <th>Berat (ton)</th>
+            <th>Harga</th>
+            <th>Action</th>
           </tr>
         </thead>
-        <tfoot>
-          <tr><th>No</th>
-            <th><center>Tanggal</center></th>
-            <th><center>Beras Digiling (ton)</center></th>
-            <th><center>Biaya Penggilingan (Rp)</center></th>
-            <th><center>Action</center></th>
-          </tr>
-        </tfoot>
         <tbody>
           <?php $no = 1;
-          foreach ($penggilingan as $baris) {
+          foreach ($pmsk as $baris) {
           ?>
           <tr><td><?php echo $no++;?></td>
-            <td><center><?php echo $baris->Tanggal; ?></center></td>
-            <td><center><?php echo $baris->Berat; ?></center></td>
-            <td><center><?php echo $baris->Biaya_Penggilingan ?></center></td>
-            <td align="center"><a href="<?php echo site_url('Penggilingan/edit/'.$baris->id_penggilingan)?>" class="btn btn-success btn-sm editbtn" type="button"><i class="fas fa-fw fa-edit"></i></a>
-            <a href="#!" onclick="deleteConfirm('<?php echo site_url('Penggilingan/hapus/'.$baris->id_penggilingan) ?>')" class="btn btn-danger btn-sm" type="button"><i class="fas fa-fw fa-trash"></i></a></td>
+            <td><?php echo $baris->tgl; ?></td>
+            <td><?php echo $baris->nama; ?></td>
+            <td><?php echo $baris->nmr ?></td>
+            <td><?php echo $baris->alamat ?></td>
+            <td><?php echo $baris->berat ?></td>
+            <td><?php echo $baris->harga ?></td>
+            <td>
+                      <a href="<?php echo site_url('pmsk/edit/'.$baris->id_pemasokan) ?>"
+                       class="btn btn-success btn-icon-split"><i class="fas fa-edit" style="padding: 5px;"></i></a>
+                      <a onclick="deleteConfirm('<?php echo base_url('pmsk/hapus/'.$baris->id_pemasokan) ?>')"
+                       href="#!" class="btn btn-danger btn-icon-split"><i class="fas fa-trash" style="padding: 5px;"></i></a>
+                    </td>
           </tr>
         <?php } ?>
         </tbody>
@@ -67,7 +69,7 @@
        <!-- End of Main Content -->
 
        <!-- Footer -->
-       <?php $this->load->view("admin/admin_penggilingan/footer.php") ?>
+       <?php $this->load->view("Admin/admin_pemasokan/footer.php") ?>
         <!-- End of Footer -->
 
     </div>
@@ -86,19 +88,21 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Yakin ingin Keluar?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Pilih "Logout" untuk keluar dari sistem.</div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="<?php echo base_url('Login/logout')?>">Logout</a>
+          <a class="btn btn-primary" href="<?php echo base_url('Login/logout');?>">Logout</a>
         </div>
       </div>
     </div>
   </div>
+
+  
 
   <!-- Bootstrap core JavaScript-->
   <script src="<?php echo base_url('asset/admin/vendor/jquery/jquery.min.js')?>"></script>
@@ -117,7 +121,7 @@
   <!-- Page level custom scripts -->
   <script src="<?php echo base_url('asset/admin/js/demo/datatables-demo.js')?>"></script>
 
-  <?php $this->load->view("Admin/admin_penggilingan/modal.php") ?>
+  <?php $this->load->view("Admin/admin_pemasokan/modal.php") ?>
 
   <script>
   function deleteConfirm(url){
@@ -129,9 +133,6 @@
 </body>
 
 </html>
-
-
-
 
 
 

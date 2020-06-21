@@ -20,37 +20,42 @@
         <!-- Topbar -->
         <?php $this->load->view("admin/admin_penggilingan/topbar.php") ?>
         <!--End of Topbar -->
-    
+        <?php if ($this->session->flashdata('success')): ?>
+        <div class="alert alert-success" role="alert">
+          <?php echo $this->session->flashdata('success'); ?>
+        </div>
+        <?php endif; ?>
+        <div class="container-fluid">
     <div class="card shadow mb-4">
            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-dark" align="text-center">Tambah Stok Beras</h6> <!--membuat judul pada card-->
+              <h6 class="m-0 font-weight-bold text-dark" align="text-center">Edit Data Hasil Giling</h6> <!--membuat judul pada card-->
            </div>
          <div class="card-body">
-          <div class="row align-items-center justify-content-center">
-  <div class="row">
-  <div class="col-lg-11">
-    <div class="p-5">
-      <div class="text-center">
-        <form class="user" action="<?php echo site_url('Hasilgiling/input/')?>" method="post" enctype="multipart/form-data">
-          <div class="form-group">
-            <label style="margin-right: 430px"><b>Kode Barang</b></label>
-            <input type="text" style="width: 600px" class="form-control <?php echo form_error('kode_barang') ? 'is-invalid':'' ?>" id="kode_barang" name="kode_barang" placeholder="Masukkan Kode Barang">
+  
+        <div class="row align-items-center justify-content-center">
+        </div><?php foreach($hasilgiling as $baris){ ?>
+          <form action="<?php echo base_url().'Hasilgiling/update'; ?>" method="post"
+              enctype="multipart/form-data" >
+
+            <div class="form-group">
+            <label style="margin-right: 510px"><b>Kode Barang</b></label>
+            <input type="text" style="width: 600px" class="form-control <?php echo form_error('kode_barang') ? 'is-invalid':'' ?> " id="kode_barang" name="kode_barang" placeholder="Masukkan nama" value="<?php echo $baris->kode_barang;?>">
             <div class="invalid-feedback">
                   <?php echo form_error('kode_barang') ?>
                 </div>
           </div>
 
           <div class="form-group">
-            <label style="margin-right: 520px"><b>Berat</b></label>
-            <input type="text" style="width: 600px" class="form-control <?php echo form_error('ukuran_sak') ? 'is-invalid':'' ?>" id="ukuran_sak" name="ukuran_sak" placeholder="Masukkan ukuran sak">
+            <label style="margin-right: 510px"><b>Ukuran Sak</b></label>
+            <input type="text" style="width: 600px" class="form-control <?php echo form_error('ukuran_sak') ? 'is-invalid':'' ?> " id="ukuran_sak" name="ukuran_sak" placeholder="Masukkan ukuran sak" value="<?php echo $baris->ukuran_sak;?>">
             <div class="invalid-feedback">
                   <?php echo form_error('ukuran_sak') ?>
                 </div>
           </div>
 
           <div class="form-group">
-            <label style="margin-right: 520px"><b>Stok</b></label>
-            <input type="text" style="width: 600px" class="form-control <?php echo form_error('stok') ? 'is-invalid':'' ?>" id="stok" name="stok" placeholder="Masukkan stok" >
+            <label style="margin-right: 420px"><b>Stok</b></label>
+            <input type="text" style="width: 600px" class="form-control <?php echo form_error('stok') ? 'is-invalid':'' ?>" id="stok" name="stok" placeholder="Masukkan stok" value="<?php echo $baris->stok; ?>">
             <div class="invalid-feedback">
                   <?php echo form_error('stok') ?>
                 </div>
@@ -58,12 +63,12 @@
 
           <br><br>
           
-        <input class="btn btn-success" type="submit" name="btn" value="Save" />
+        <input class="btn btn-success" type="submit" name="btn" value="Update" onclick="return confirm('Anda yakin ingin mengupdate data?');" />
               <br><br>
             </form>
-</div>
-</div>
-  </div>
+            <?php } ?>
+          </div>
+          </div>
 </div>
 </div>
 

@@ -30,11 +30,13 @@
   <div class="col-lg-11">
     <div class="p-5">
       <div class="text-center">
-        <form class="user" action="<?php echo base_url('Hasilgiling/EditStok')?>" method="get" enctype="multipart/form-data">
+      </div><?php foreach($hasilgiling as $baris){ ?>
+        <form action="<?php echo base_url().'Hasilgiling/ProsesTambah'; ?>" method="post"
+              enctype="multipart/form-data" >
         <div class="form-group row">
               <label class="col-sm-8 col-md-2 col-form-label">Kode Barang &nbsp;&nbsp;:</label>
-              <label class="col-sm-8 col-md-2 col-form-label"><?php echo $tb_hasil_giling->kode_barang; ?></label>
-              <input type="text" style="width: 600px" class="form-control <?php echo form_error('kode_barang') ? 'is-invalid':'' ?>" id="kode_barang" name="kode_barang" placeholder="Masukkan Kode" hidden value="<?php echo $tb_hasil_giling->kode_barang; ?>">
+              <label class="col-sm-8 col-md-2 col-form-label"><?php echo $baris->kode_barang; ?></label>
+              <input type="text" style="width: 600px" class="form-control <?php echo form_error('kode_barang') ? 'is-invalid':'' ?>" id="kode_barang" name="kode_barang" placeholder="Masukkan Kode" hidden value="<?php echo $baris->kode_barang; ?>">
             <div class="invalid-feedback">
                   <?php echo form_error('kode_barang') ?>
                 </div>
@@ -42,7 +44,7 @@
 
           <div class="form-group row">
               <label class="col-sm-8 col-md-2 col-form-label">Ukuran Sak &nbsp;&nbsp;:</label>
-              <label class="col-sm-8 col-md-2 col-form-label"><?php echo $tb_hasil_giling->ukuran_sak; ?></label>
+              <label class="col-sm-8 col-md-2 col-form-label"><?php echo $baris->ukuran_sak; ?></label>
             <div class="invalid-feedback">
                   <?php echo form_error('stok') ?>
                 </div>
@@ -50,8 +52,8 @@
 
           <div class="form-group row">
               <label class="col-sm-8 col-md-2 col-form-label">Stok &nbsp;&nbsp;&nbsp;&nbsp;:</label>
-              <label class="col-sm-8 col-md-2 col-form-label"><?php echo $tb_hasil_giling->stok; ?></label>
-              <input type="text" style="width: 600px" class="form-control <?php echo form_error('stok') ? 'is-invalid':'' ?>" id="stok" name="stok" placeholder="Masukkan Stok" hidden value="<?php echo $tb_hasil_giling->stok; ?>">
+              <label class="col-sm-8 col-md-2 col-form-label"><?php echo $baris->stok; ?></label>
+              <input type="text" style="width: 600px" class="form-control <?php echo form_error('stok') ? 'is-invalid':'' ?>" id="stok" name="stok" placeholder="Masukkan Stok" hidden value="<?php echo $baris->stok; ?>">
             <div class="invalid-feedback">
                   <?php echo form_error('kode_barang') ?>
                 </div>
@@ -60,13 +62,14 @@
           <div class="form-group row">
               <label class="col-sm-8 col-md-2 col-form-label">Tambah Stok &nbsp;&nbsp;&nbsp;&nbsp; :</label>
               <div class="col-sm-8 col-md-9">
-                <input class="form-control" id="stok" placeholder="Masukkan Stok" type="text"  name="stok" required> 
+                <input class="form-control" id="stokk" placeholder="Masukkan Stok" type="text"  name="stokk" required> 
               </div>
             </div><br>
           
         <input class="btn btn-success" type="submit" name="btn" value="Update" onclick="return confirm('Yakin ingin Update?');" />
               <br><br>
             </form>
+            <?php } ?>
 </div>
 </div>
   </div>

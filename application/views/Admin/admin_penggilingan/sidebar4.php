@@ -23,7 +23,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="i<?php echo base_url('Penggilingan/add')?>">
+      <a class="nav-link" href="<?php echo site_url('Penggilingan/tambah')?>">
           <i class="fas fa-fw fa-pencil-alt"></i>
           <span>Input Data Penggilingan</span></a>
       </li>
@@ -37,9 +37,9 @@
         <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">View Data:</h6>
-            <a class="collapse-item" href="<?php echo base_url('Penggilingan/index')?>">Data Penggilingan</a>
+            <a class="collapse-item" href="<?php echo site_url('Penggilingan/index')?>">Data Penggilingan</a>
             <a class="collapse-item" href="<?php echo base_url('Hasilgiling/index')?>">Data Stok Beras</a>
-            <a class="collapse-item active" href="<?php echo base_url('Stok/index')?>">Stok Padi</a>
+            <a class="collapse-item active" href="<?php echo base_url('StokP/index')?>">Stok Padi</a>
           </div>
         </div>
       </li>

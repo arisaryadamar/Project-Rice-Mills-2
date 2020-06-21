@@ -33,7 +33,7 @@
            </div>
          <div class="card-body">
 
-            <form action="<?php echo site_url('Penggilingan/add') ?>" method="post" enctype="multipart/form-data">
+         <form action="<?php echo site_url('Penggilingan/input') ?>" method="post" enctype="multipart/form-data">
             <!-- Note: atribut action dikosongkan, artinya action-nya akan diproses 
               oleh controller tempat vuew ini digunakan. Yakni index.php/admin/products/edit/ID --->
 
@@ -57,7 +57,7 @@
               <div class="form-group">
                 <label for="Biaya_Penggilingan">Biaya Penggilingan</label>
                 <input class="form-control"
-                 type="text" id="Biaya_Penggilingan" name="Biaya_Penggilingan" min="0" placeholder="Masukkan biaya penggilingan" value="<?php echo form_error('Biaya_Penggilingan') ?>" />
+                 type="text" id="Biaya_Penggilingan" name="Biaya_Penggilingan" placeholder="Masukkan biaya penggilingan" value="<?php echo form_error('Biaya_Penggilingan') ?>" />
                 <div class="invalid-feedback">
                   <?php echo form_error('Biaya_Penggilingan') ?>
                 </div>
@@ -66,11 +66,6 @@
               <input class="btn btn-success" type="submit" name="btn" value="Save" />
             </form>
           </div>
-
-          <div class="card-footer small text-muted">
-            * required fields
-          </div>
-
   </div>
   
 

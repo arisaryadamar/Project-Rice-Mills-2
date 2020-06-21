@@ -27,7 +27,7 @@ $getGrup = $this->session->userdata('session_grup');
  
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link active" href="<?php echo base_url('Penjualan/add')?>">
+        <a class="nav-link active" href="<?php echo base_url('Penjualan/Tambah')?>">
           <i class="fas fa-fw fa-pencil-alt"></i>
           <span>Input Data Penjualan</span></a>
       </li>

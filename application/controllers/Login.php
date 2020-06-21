@@ -15,14 +15,17 @@ class Login extends CI_Controller{
 		$username = $this->input->post('txt_user');
 		$password = md5($this->input->post('txt_pass'));
 		$cek = $this->Login_model->login($username,$password,'user')->result();
+		
 		if($cek != FALSE){
+			
 			foreach ($cek as $row) {
 				$user = $row->username;
 				$grup = $row->grup;
 			}
-			$this->session->set_userdata('session_user', $user);
-			$this->session->set_userdata('session_grup', $grup);
-			redirect('Ricemills');
+
+			$a = $this->session->set_userdata('session_user', $user);
+			$b = $this->session->set_userdata('session_grup', $grup);
+			 redirect('Ricemills');
 		}else{
 			$this->load->view('crud/login');
 		}
