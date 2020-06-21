@@ -9,6 +9,7 @@ class Penggilingan_model extends CI_Model{
         //  $query= $this->db->get();
          return $query;
 }
+<<<<<<< HEAD
 
 // function chart(){
 //     $this->db->select('tgl,berat');
@@ -17,6 +18,8 @@ class Penggilingan_model extends CI_Model{
 //     //  $query= $this->db->get();
 //      return $query;
 // }
+=======
+>>>>>>> 113c9a1a9a517665fab9c43a903a8d5b72fac137
 
 function input_data($data,$table){
     $query = $this->db->insert($table,$data);
